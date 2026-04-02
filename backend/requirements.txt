@@ -1,0 +1,8 @@
+fastapi
+uvicorn[standard]
+sqlalchemy
+pydantic
+numpy
+python-dateutil
+google-generativeai
+python-dotenv

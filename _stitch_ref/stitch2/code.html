@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PhysioTrack - Analytics Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#007bff",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1923",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<header class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark px-6 py-4 lg:px-20">
+<div class="flex items-center gap-4">
+<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-white">
+<span class="material-symbols-outlined">analytics</span>
+</div>
+<h2 class="text-xl font-bold tracking-tight">PhysioTrack</h2>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined">calendar_today</span>
+</button>
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 flex h-2 w-2 rounded-full bg-red-500"></span>
+</button>
+<div class="h-10 w-10 rounded-full bg-slate-200 dark:bg-slate-700 bg-cover bg-center border-2 border-primary/20" data-alt="User profile picture of a young male professional" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAfYP7NtVmeDmPR_C064rer6BZhbft2egy9P1bLKssH1N1JGEftI8uRiDJiUITWiTMZT65Qf6oPi9kLDu1DDZ-h1Qj-liTpZb0P3Cwp9VWXXkP2qofUOahwIq2DorxYbAGtxihDem1H5Mcc-NPb8lmxE4Mz1WKFma56KeC5iLOBCH6aNSx96zoRL2_mwSU2GwTDlwN5jeaQ-0yfW4vqK3HEAAUqzn-a0jthk-Bvb_O2K5DEsEhsX_cCoGWBk2wGfdnPqNcWvLirmVg")'></div>
+</div>
+</header>
+<main class="flex flex-1 flex-col lg:flex-row lg:px-20 py-8 gap-8">
+<aside class="w-full lg:w-64 flex flex-col gap-2 px-6 lg:px-0">
+<div class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary text-white shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">dashboard</span>
+<p class="text-sm font-semibold">Dashboard</p>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400 transition-colors">
+<span class="material-symbols-outlined">fitness_center</span>
+<p class="text-sm font-medium">My Routine</p>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400 transition-colors">
+<span class="material-symbols-outlined">history</span>
+<p class="text-sm font-medium">Session History</p>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400 transition-colors">
+<span class="material-symbols-outlined">person</span>
+<p class="text-sm font-medium">Profile Settings</p>
+</div>
+<div class="mt-8 p-4 rounded-xl bg-primary/10 border border-primary/20">
+<p class="text-xs font-bold text-primary uppercase tracking-wider mb-2">Weekly Goal</p>
+<div class="flex justify-between mb-1">
+<span class="text-xs font-medium text-slate-600 dark:text-slate-300">4 of 5 sessions</span>
+<span class="text-xs font-bold text-primary">80%</span>
+</div>
+<div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-1.5">
+<div class="bg-primary h-1.5 rounded-full" style="width: 80%"></div>
+</div>
+</div>
+</aside>
+<div class="flex-1 px-6 lg:px-0 flex flex-col gap-6">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+<div>
+<h1 class="text-2xl font-bold">Analytics Overview</h1>
+<p class="text-slate-500 dark:text-slate-400">Track your biomechanical progress</p>
+</div>
+<div class="flex bg-white dark:bg-slate-800 rounded-lg p-1 border border-slate-200 dark:border-slate-700">
+<button class="px-4 py-1.5 text-sm font-medium rounded-md bg-primary text-white">Weekly</button>
+<button class="px-4 py-1.5 text-sm font-medium rounded-md text-slate-600 dark:text-slate-300">Monthly</button>
+<button class="px-4 py-1.5 text-sm font-medium rounded-md text-slate-600 dark:text-slate-300">Yearly</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
+<p class="text-sm font-medium text-slate-500 mb-1">Average Form Score</p>
+<div class="flex items-end gap-2">
+<h3 class="text-3xl font-bold">84%</h3>
+<span class="text-green-500 text-sm font-bold flex items-center mb-1">
+<span class="material-symbols-outlined text-sm">arrow_upward</span> 12%
+                                </span>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
+<p class="text-sm font-medium text-slate-500 mb-1">Time in Bad Posture</p>
+<div class="flex items-end gap-2">
+<h3 class="text-3xl font-bold">1.2h</h3>
+<span class="text-green-500 text-sm font-bold flex items-center mb-1">
+<span class="material-symbols-outlined text-sm">arrow_downward</span> 0.4h
+                                </span>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
+<p class="text-sm font-medium text-slate-500 mb-1">Exercises Completed</p>
+<div class="flex items-end gap-2">
+<h3 class="text-3xl font-bold">28</h3>
+<span class="text-primary text-sm font-bold flex items-center mb-1">
+                                    +4 Today
+                                </span>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-bold text-lg">Posture Trends</h3>
+<span class="text-xs text-slate-400">Last updated: 2 hours ago</span>
+</div>
+<div class="h-64 w-full">
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 800 200">
+<defs>
+<lineargradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#007bff" stop-opacity="0.2"></stop>
+<stop offset="100%" stop-color="#007bff" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<path d="M0 150 Q 100 80 200 120 T 400 60 T 600 90 T 800 40 L 800 200 L 0 200 Z" fill="url(#chartGradient)"></path>
+<path d="M0 150 Q 100 80 200 120 T 400 60 T 600 90 T 800 40" fill="none" stroke="#007bff" stroke-width="3"></path>
+<circle cx="400" cy="60" fill="#007bff" r="4"></circle>
+</svg>
+</div>
+<div class="flex justify-between mt-4 text-xs font-bold text-slate-400 uppercase tracking-widest">
+<span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
+<h3 class="font-bold text-lg mb-6">Common Issues Detected</h3>
+<div class="space-y-6">
+<div>
+<div class="flex justify-between text-sm mb-2">
+<span class="font-medium">Forward Head Posture</span>
+<span class="font-bold">42% of sessions</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-700 rounded-full h-3">
+<div class="bg-red-400 h-3 rounded-full" style="width: 42%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-sm mb-2">
+<span class="font-medium">Rounded Shoulders</span>
+<span class="font-bold">28% of sessions</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-700 rounded-full h-3">
+<div class="bg-orange-400 h-3 rounded-full" style="width: 28%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-sm mb-2">
+<span class="font-medium">Anterior Pelvic Tilt</span>
+<span class="font-bold">15% of sessions</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-700 rounded-full h-3">
+<div class="bg-yellow-400 h-3 rounded-full" style="width: 15%"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm flex flex-col">
+<h3 class="font-bold text-lg mb-4">Recommended Exercises</h3>
+<p class="text-sm text-slate-500 mb-6">Based on your forward head posture trends</p>
+<div class="space-y-4 flex-1">
+<div class="flex items-center gap-4 p-3 rounded-xl border border-slate-100 dark:border-slate-700 hover:border-primary/50 transition-all cursor-pointer">
+<div class="h-12 w-12 rounded-lg bg-slate-200 overflow-hidden">
+<div class="w-full h-full bg-cover bg-center" data-alt="Person performing chin tuck exercise" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB0uKkgLIOxHkFSsQAAU4tHS61CWruAaZznZQPv8KhQXoNwPlfp4PK8Fiy8VlaLKviw7XOQwQsr9QWyPwsRiB9NrEjcufQ8a_s-L_RxaCNMrqKEotCubJvi-jyVLGAgymXG9qaOB3JhFyvES6kSJ1F7mVHcecHILWpn6lD6o2QJPKO8c4_ObqH3DjBgk3GtDbidibRwfy8-jqrTGxHWpLCRDWrWe4IzaVU3aRoQPLjvUZ0RKb6RxbDG_w6Nxzjx-Y7lycFcmPmkfPo')"></div>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold">Chin Tucks</p>
+<p class="text-xs text-slate-500">3 sets of 10 reps</p>
+</div>
+<span class="material-symbols-outlined text-primary">play_circle</span>
+</div>
+<div class="flex items-center gap-4 p-3 rounded-xl border border-slate-100 dark:border-slate-700 hover:border-primary/50 transition-all cursor-pointer">
+<div class="h-12 w-12 rounded-lg bg-slate-200 overflow-hidden">
+<div class="w-full h-full bg-cover bg-center" data-alt="Person stretching chest against wall" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBe5l6f8Viyddjz2BrcClwO1eb2JOY7lmX2aNrJoJgANwA1UOjAft97mavc9cWaWX8apvgpX1nKXW6W7tKq-i9QiRrYC8gHKwxKvZgREAjkTIQGRsHH5IezBMwlXXOKlFz1NEMuVTTeXIbvPN4nRO3Owuy0UdUhKpB27pdRqu57v0dWHLG6-jkTK_VZWs5M5fvNzi7zbzSbbpcFf4_yxJaaAzZqW2AW5MUf5y7uze_yT5ZL-LgOLmPSouWtWgKFVjf34lYPHE7bmP4')"></div>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold">Doorway Chest Stretch</p>
+<p class="text-xs text-slate-500">2 min daily hold</p>
+</div>
+<span class="material-symbols-outlined text-primary">play_circle</span>
+</div>
+</div>
+<button class="mt-4 w-full py-3 bg-primary text-white rounded-xl font-bold text-sm shadow-md shadow-primary/20 hover:opacity-90 transition-opacity">
+                                Start Custom Routine
+                            </button>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-bold text-lg">Consistency Map</h3>
+<div class="flex gap-1">
+<div class="w-3 h-3 rounded-sm bg-primary/10"></div>
+<div class="w-3 h-3 rounded-sm bg-primary/40"></div>
+<div class="w-3 h-3 rounded-sm bg-primary/70"></div>
+<div class="w-3 h-3 rounded-sm bg-primary"></div>
+</div>
+</div>
+<div class="grid grid-cols-7 md:grid-cols-14 gap-2">
+<!-- Generation of heat map grid items -->
+<div class="aspect-square bg-primary rounded-sm"></div>
+<div class="aspect-square bg-primary/70 rounded-sm"></div>
+<div class="aspect-square bg-primary/10 rounded-sm"></div>
+<div class="aspect-square bg-primary/40 rounded-sm"></div>
+<div class="aspect-square bg-primary rounded-sm"></div>
+<div class="aspect-square bg-primary/70 rounded-sm"></div>
+<div class="aspect-square bg-primary/10 rounded-sm"></div>
+<div class="aspect-square bg-primary rounded-sm"></div>
+<div class="aspect-square bg-primary/40 rounded-sm"></div>
+<div class="aspect-square bg-primary rounded-sm"></div>
+<div class="aspect-square bg-primary/70 rounded-sm"></div>
+<div class="aspect-square bg-primary/40 rounded-sm"></div>
+<div class="aspect-square bg-primary/10 rounded-sm"></div>
+<div class="aspect-square bg-primary/70 rounded-sm"></div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>
