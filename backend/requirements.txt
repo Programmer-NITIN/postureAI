@@ -6,3 +6,8 @@ numpy
 python-dateutil
 google-generativeai
 python-dotenv
+passlib[bcrypt]
+PyJWT
+edge-tts
+google-auth
+google-auth-oauthlib

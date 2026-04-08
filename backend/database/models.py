@@ -2,18 +2,51 @@
 Database models for the Posture Correction system.
 
 Tables:
+  - User: Registered user (patient or doctor)
   - Session: A workout/monitoring session
   - PostureFrame: Individual posture snapshots within a session
   - ExerciseLog: Completed exercise records with scores
 """
 
 from sqlalchemy import (
-    Column, Integer, Float, String, DateTime, Text, ForeignKey, JSON
+    Column, Integer, Float, String, DateTime, Text, ForeignKey, JSON, Boolean
 )
 from sqlalchemy.orm import relationship
 from datetime import datetime, timezone
 
 from backend.database.connection import Base
+
+
+class User(Base):
+    """
+    Registered user account.
+    Supports both email/password and Google OAuth login.
+    """
+    __tablename__ = "users"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    email = Column(String(255), unique=True, nullable=False, index=True)
+    hashed_password = Column(String(255), nullable=True)  # Null for Google-only users
+    name = Column(String(255), nullable=True)
+    picture = Column(Text, nullable=True)  # Profile picture URL (from Google)
+    role = Column(String(20), default="patient")  # patient | doctor
+    google_id = Column(String(255), nullable=True, unique=True)  # Google OAuth sub ID
+    is_active = Column(Boolean, default=True)
+    created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
+
+    # Relationships
+    sessions = relationship("Session", back_populates="user", cascade="all, delete-orphan")
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "email": self.email,
+            "name": self.name,
+            "picture": self.picture,
+            "role": self.role,
+            "is_active": self.is_active,
+            "created_at": self.created_at.isoformat() if self.created_at else None,
+        }
 
 
 class Session(Base):
@@ -24,6 +57,7 @@ class Session(Base):
     __tablename__ = "sessions"
 
     id = Column(Integer, primary_key=True, autoincrement=True)
+    user_id = Column(Integer, ForeignKey("users.id"), nullable=True)  # Nullable for legacy data
     exercise_type = Column(String(50), nullable=False, default="general")
     started_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
     ended_at = Column(DateTime, nullable=True)
@@ -36,11 +70,13 @@ class Session(Base):
     status = Column(String(20), default="active")  # active | completed
 
     # Relationships
+    user = relationship("User", back_populates="sessions")
     frames = relationship("PostureFrame", back_populates="session", cascade="all, delete-orphan")
 
     def to_dict(self):
         return {
             "id": self.id,
+            "user_id": self.user_id,
             "exercise_type": self.exercise_type,
             "started_at": self.started_at.isoformat() if self.started_at else None,
             "ended_at": self.ended_at.isoformat() if self.ended_at else None,
