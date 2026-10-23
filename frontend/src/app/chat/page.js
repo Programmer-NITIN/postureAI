@@ -31,7 +31,7 @@ export default function ChatPage() {
     {
       role: "assistant",
       content:
-        "Namaste! 🙏 I'm **Dr. AI**, your personal health & wellness assistant powered by PostureAI.\n\nI can help you with a wide range of topics — fitness, posture, nutrition, sleep, mental wellness, and much more! I also have access to your posture tracking data for personalized advice.\n\nAsk me anything! ⚡",
+        "Namaste! 🙏 I'm **Dr. AI**, your personal health & wellness assistant powered by TrueForm AI.\n\nI can help you with a wide range of topics — fitness, posture, nutrition, sleep, mental wellness, and much more! I also have access to your posture tracking data for personalized advice.\n\nAsk me anything! ⚡",
       suggestions: ["How's my posture?", "Suggest a meal plan", "Tips for better sleep"],
     },
   ]);
@@ -105,7 +105,7 @@ export default function ChatPage() {
             <h1 className="text-2xl font-bold text-slate-900">Dr. AI — Physiotherapy Chat</h1>
             <p className="text-xs text-emerald-500 flex items-center gap-1.5">
               <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
-              Online • Powered by your PostureAI data
+              Online • Powered by your TrueForm AI data
             </p>
           </div>
         </div>

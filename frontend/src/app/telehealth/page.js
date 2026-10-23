@@ -129,6 +129,9 @@ export default function TelehealthPage() {
   // Start WebRTC: capture the composite canvas and send to doctor
   const startWebRTC = async (doctorId, socket) => {
     try {
+      if (!navigator.mediaDevices?.getUserMedia) {
+        throw new Error("Camera/Mic is blocked: mobile browsers require HTTPS or the Chrome insecure-origin flag.");
+      }
       // Get audio stream
       const audioStream = await navigator.mediaDevices.getUserMedia({ audio: true });
       console.log("[Patient] Got audio");
@@ -230,7 +233,7 @@ export default function TelehealthPage() {
       ctx.fillStyle = "#00ff88";
       ctx.font = "bold 13px Inter, system-ui";
       ctx.textAlign = "left";
-      ctx.fillText(`🤖 PostureAI — Score: ${score}%`, 16, 29);
+      ctx.fillText(`🤖 TrueForm AI — Score: ${score}%`, 16, 29);
 
       if (exerciseName) {
         ctx.fillStyle = "rgba(0,0,0,0.6)";

@@ -69,6 +69,10 @@ export default function CameraFeed({ onLandmarksUpdate, isTracking }) {
   useEffect(() => {
     async function startCamera() {
       try {
+        if (!navigator.mediaDevices?.getUserMedia) {
+          setError("Camera access requires HTTPS or enabling the Chrome insecure origin flag on mobile.");
+          return;
+        }
         const stream = await navigator.mediaDevices.getUserMedia({
           video: { width: 640, height: 480, facingMode: "user" },
         });

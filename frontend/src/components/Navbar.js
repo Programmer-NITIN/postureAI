@@ -9,6 +9,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import TrueFormLogo from "@/components/TrueFormLogo";
 
 const NAV_ITEMS = [
   { href: "/", label: "Home", icon: "home" },
@@ -30,10 +31,8 @@ export default function Navbar() {
           {/* Brand */}
           <div className="flex items-center gap-3">
             <Link href="/" className="flex items-center gap-2.5 group">
-              <div className="w-9 h-9 rounded-lg bg-[var(--primary)] flex items-center justify-center text-white text-lg font-bold shadow-lg shadow-blue-500/20 group-hover:shadow-blue-500/40 transition-shadow">
-                P
-              </div>
-              <span className="text-lg font-bold tracking-tight text-slate-900">PostureAI</span>
+              <TrueFormLogo size={36} />
+              <span className="text-lg font-bold tracking-tight text-slate-900">TrueForm AI</span>
             </Link>
             {/* Viksit Bharat Badge */}
             <div className="hidden md:flex items-center gap-1.5 bg-gradient-to-r from-orange-50 via-white to-green-50 border border-orange-200/60 rounded-full px-3 py-1">

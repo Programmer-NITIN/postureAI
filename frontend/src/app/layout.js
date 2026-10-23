@@ -2,7 +2,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 
 export const metadata = {
-  title: "PostureAI — AI-Powered Posture Correction & Physiotherapy",
+  title: "TrueForm AI — AI-Powered Posture Correction & Physiotherapy",
   description:
     "Real-time AI posture analysis using computer vision. Correct your posture in real-time with instant feedback — like having a physiotherapist in your pocket.",
 };

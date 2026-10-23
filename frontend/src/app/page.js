@@ -1,7 +1,7 @@
 "use client";
 
 /**
- * Landing Page — PostureAI Home
+ * Landing Page — TrueForm AI Home
  *
  * Professional landing page inspired by VisionPhysio design:
  * - Hero section with bold headline, CTA, and phone mockup
@@ -12,6 +12,7 @@
  */
 
 import Link from "next/link";
+import TrueFormLogo from "@/components/TrueFormLogo";
 
 export default function LandingPage() {
   return (
@@ -36,7 +37,7 @@ export default function LandingPage() {
               </h1>
 
               <p className="text-lg lg:text-xl text-slate-500 mb-10 max-w-2xl leading-relaxed">
-                Experience the future of physiotherapy. PostureAI uses advanced
+                Experience the future of physiotherapy. TrueForm AI uses advanced
                 computer vision to provide instant feedback, helping you move
                 better and prevent injuries from the comfort of home.
               </p>
@@ -183,7 +184,7 @@ export default function LandingPage() {
           <div className="bg-blue-50 rounded-[2.5rem] p-8 lg:p-16 overflow-hidden relative">
             <div className="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
               <div className="mb-12 lg:mb-0">
-                <h3 className="text-3xl lg:text-4xl font-black text-slate-900 mb-8">The Benefits of PostureAI</h3>
+                <h3 className="text-3xl lg:text-4xl font-black text-slate-900 mb-8">The Benefits of TrueForm AI</h3>
 
                 <div className="space-y-6">
                   <div className="flex gap-4">
@@ -338,9 +339,9 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-4 gap-12 mb-12">
             <div className="col-span-2 md:col-span-1">
-              <div className="flex items-center gap-2 mb-4">
-                <div className="w-8 h-8 rounded-lg bg-[var(--primary)] flex items-center justify-center text-white text-sm font-bold">P</div>
-                <span className="text-xl font-bold tracking-tight text-slate-900">PostureAI</span>
+              <div className="flex items-center gap-2.5 mb-4">
+                <TrueFormLogo size={32} />
+                <span className="text-xl font-bold tracking-tight text-slate-900">TrueForm AI</span>
               </div>
               <p className="text-slate-400 text-sm leading-relaxed mb-4">
                 AI-powered posture correction and physiotherapy for accessible healthcare. Built for Viksit Bharat 2047.
@@ -385,7 +386,7 @@ export default function LandingPage() {
           </div>
 
           <div className="pt-8 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-slate-400">© 2025 PostureAI — AI Posture Correction & Physiotherapy</p>
+            <p className="text-sm text-slate-400">© 2025 TrueForm AI — AI Posture Correction & Physiotherapy</p>
             <p className="text-sm text-slate-400">Built for Viksit Bharat 2047 🇮🇳</p>
           </div>
         </div>

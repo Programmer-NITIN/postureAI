@@ -123,6 +123,9 @@ export default function DoctorDashboardPage() {
     setStatusMsg("Accepting call — requesting camera...");
 
     try {
+      if (!navigator.mediaDevices?.getUserMedia) {
+        throw new Error("Camera/Mic is blocked: mobile browsers require HTTPS or the Chrome insecure-origin flag.");
+      }
       const stream = await navigator.mediaDevices.getUserMedia({
         video: true,
         audio: true,
